@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { registerUser } from "../../firebase/auth";
 import toast from "react-hot-toast";
-
 import styles from "./RegisterForm.module.css";
+import { getAuthErrorMessage } from "../../utils/getAuthErrorMessage";
 
 interface RegisterFormProps {
   onSuccess: () => void;
@@ -48,8 +48,9 @@ const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
 
       toast.success("Registration successful!");
       onSuccess();
-    } catch {
-      toast.error("Registration failed. Please try again.");
+    } catch (error) {
+      const message = getAuthErrorMessage(error);
+      toast.error(message);
     }
   };
 
