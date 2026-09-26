@@ -6,12 +6,22 @@ import RegisterForm from "../RegisterForm/RegisterForm";
 import { useAuth } from "../../context/useAuth";
 import { logoutUser } from "../../firebase/auth";
 import LoginForm from "../LoginForm/LoginForm";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const { user, loading } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      toast.success("You have successfully logged out!");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <>
@@ -47,7 +57,7 @@ const Header = () => {
                 <>
                   <span>{user.displayName}</span>
 
-                  <button type="button" onClick={logoutUser}>
+                  <button type="button" onClick={handleLogout}>
                     Log Out
                   </button>
                 </>
