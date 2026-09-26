@@ -1,0 +1,99 @@
+.page {
+  padding: 40px 20px;
+}
+
+.title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.psychologistsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 40px 0 32px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.loadMoreButton {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 14px;
+
+  background-color: #54be96;
+  color: #fff;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.loadMoreButton:hover {
+  background-color: #42aa82;
+}
+
+.filterWrapper {
+  position: relative;
+  width: 226px;
+}
+
+.filterLabel {
+  margin-bottom: 8px;
+}
+
+.filterButton {
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background-color: #54be96;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.filterOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+
+  width: 100%;
+  margin: 4px 0 0;
+  padding: 8px 0;
+
+  border-radius: 14px;
+  background-color: #fff;
+
+  list-style: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.filterOption {
+  width: 100%;
+  padding: 10px 18px;
+
+  border: none;
+  background-color: transparent;
+
+  color: #8a8a8a;
+  font: inherit;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.filterOption:hover {
+  background-color: #f3f3f3;
+}

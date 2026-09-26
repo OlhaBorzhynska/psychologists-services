@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getPsychologists } from "../../firebase/psychologists";
 import type { Psychologist } from "../../types/psychologist";
 import PsychologistCard from "../../components/PsychologistCard/PsychologistCard";
+import css from "./Psychologists.module.css";
 
 type FilterOption =
   | "a-to-z"
@@ -12,10 +13,21 @@ type FilterOption =
   | "not-popular"
   | "show-all";
 
+const filterOptions: { value: FilterOption; label: string }[] = [
+  { value: "a-to-z", label: "A to Z" },
+  { value: "z-to-a", label: "Z to A" },
+  { value: "less-than-10", label: "Less than 10$" },
+  { value: "greater-than-10", label: "Greater than 10$" },
+  { value: "popular", label: "Popular" },
+  { value: "not-popular", label: "Not popular" },
+  { value: "show-all", label: "Show all" },
+];
+
 const Psychologists = () => {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   const [visibleCount, setVisibleCount] = useState(3);
   const [filter, setFilter] = useState<FilterOption>("show-all");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     const fetchPsychologists = async () => {
@@ -64,26 +76,46 @@ const Psychologists = () => {
   const visiblePsychologists = filteredPsychologists.slice(0, visibleCount);
 
   return (
-    <div>
-      <h1>Psychologists page</h1>
+    <main className={css.page}>
+      <h1 className={css.title}>Psychologists</h1>
 
-      <select
-        value={filter}
-        onChange={(event) => {
-          setFilter(event.target.value as FilterOption);
-          setVisibleCount(3);
-        }}
-      >
-        <option value="a-to-z">A to Z</option>
-        <option value="z-to-a">Z to A</option>
-        <option value="less-than-10">Less than 10$</option>
-        <option value="greater-than-10">Greater than 10$</option>
-        <option value="popular">Popular</option>
-        <option value="not-popular">Not popular</option>
-        <option value="show-all">Show all</option>
-      </select>
+      <div className={css.filterWrapper}>
+        <p className={css.filterLabel}>Filters</p>
 
-      <ul>
+        <button
+          className={css.filterButton}
+          type="button"
+          onClick={() => setIsFilterOpen((prev) => !prev)}
+        >
+          <span>
+            {filterOptions.find((option) => option.value === filter)?.label}
+          </span>
+
+          <span>{isFilterOpen ? "▲" : "▼"}</span>
+        </button>
+
+        {isFilterOpen && (
+          <ul className={css.filterOptions}>
+            {filterOptions.map((option) => (
+              <li key={option.value}>
+                <button
+                  className={css.filterOption}
+                  type="button"
+                  onClick={() => {
+                    setFilter(option.value);
+                    setVisibleCount(3);
+                    setIsFilterOpen(false);
+                  }}
+                >
+                  {option.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <ul className={css.psychologistsList}>
         {visiblePsychologists.map((psychologist) => (
           <PsychologistCard
             key={psychologist.name}
@@ -94,13 +126,14 @@ const Psychologists = () => {
 
       {visibleCount < filteredPsychologists.length && (
         <button
+          className={css.loadMoreButton}
           type="button"
           onClick={() => setVisibleCount((prev) => prev + 3)}
         >
           Load more
         </button>
       )}
-    </div>
+    </main>
   );
 };
 
