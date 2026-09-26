@@ -56,3 +56,96 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 24px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.review {
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #f3f3f3;
+}
+
+.avatarRatingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatarName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  background-color: #fff;
+
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.nameRatingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  margin: 0;
+}
+
+.star {
+  font-size: 18px;
+}
+
+.comment {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.appointmentButton {
+  margin-top: 24px;
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 14px;
+
+  background-color: #54be96;
+  color: #fff;
+
+  font: inherit;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.appointmentButton:hover {
+  background-color: #42aa82;
+}

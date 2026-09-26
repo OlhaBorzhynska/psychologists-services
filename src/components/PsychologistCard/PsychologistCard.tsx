@@ -1,11 +1,17 @@
 import type { Psychologist } from "../../types/psychologist";
 import css from "./PsychologistCard.module.css";
+import { useState } from "react";
+import Modal from "../Modal/Modal";
+import AppointmentForm from "../AppointmentForm/AppointmentForm";
 
 interface PsychologistCardProps {
   psychologist: Psychologist;
 }
 
 const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+
   return (
     <li className={css.card}>
       <div className={css.header}>
@@ -46,9 +52,59 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
 
       <p className={css.about}>{psychologist.about}</p>
 
-      <button className={css.readMoreButton} type="button">
-        Read more
-      </button>
+      {!isExpanded && (
+        <button
+          className={css.readMoreButton}
+          type="button"
+          onClick={() => setIsExpanded(true)}
+        >
+          Read more
+        </button>
+      )}
+
+      {isExpanded && (
+        <ul className={css.reviews}>
+          {psychologist.reviews.slice(0, 2).map((review) => (
+            <li key={review.reviewer} className={css.review}>
+              <div className={css.avatarRatingWrapper}>
+                <div className={css.avatarName}>
+                  {review.reviewer.charAt(0).toUpperCase()}
+                </div>
+
+                <div className={css.nameRatingWrapper}>
+                  <h3 className={css.name}>{review.reviewer}</h3>
+
+                  <p className={css.rating}>
+                    <span className={css.star}>★</span>
+                    {review.rating}
+                  </p>
+                </div>
+              </div>
+
+              <p className={css.comment}>{review.comment}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {isExpanded && (
+        <button
+          className={css.appointmentButton}
+          type="button"
+          onClick={() => setIsAppointmentOpen(true)}
+        >
+          Make an appointment
+        </button>
+      )}
+
+      {isAppointmentOpen && (
+        <Modal onClose={() => setIsAppointmentOpen(false)}>
+          <AppointmentForm
+            psychologist={psychologist}
+            onSuccess={() => setIsAppointmentOpen(false)}
+          />
+        </Modal>
+      )}
     </li>
   );
 };

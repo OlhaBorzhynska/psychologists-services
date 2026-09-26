@@ -1,0 +1,94 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0 0 24px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.psychologist {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.psychologistLabel {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #888;
+}
+
+.psychologistName {
+  margin: 0;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitButton {
+  padding: 14px 24px;
+
+  border: none;
+  border-radius: 12px;
+
+  background-color: #54be96;
+  color: #fff;
+
+  font: inherit;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #42aa82;
+}
+
+.error {
+  margin: 4px 0 0;
+  color: #e53935;
+  font-size: 12px;
+}
