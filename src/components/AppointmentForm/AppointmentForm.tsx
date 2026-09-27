@@ -15,7 +15,7 @@ interface AppointmentFormData {
   phone: string;
   time: string;
   email: string;
-  comment?: string;
+  comment: string;
 }
 
 const appointmentSchema = yup.object({
@@ -26,7 +26,7 @@ const appointmentSchema = yup.object({
     .string()
     .email("Enter a valid email")
     .required("Email is required"),
-  comment: yup.string(),
+  comment: yup.string().required("Comment is required"),
 });
 
 const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
@@ -107,12 +107,17 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
           {errors.email && <p className={css.error}>{errors.email.message}</p>}
         </div>
 
-        <textarea
-          className={css.textarea}
-          placeholder="Comment"
-          rows={4}
-          {...register("comment")}
-        />
+        <div>
+          <textarea
+            className={css.textarea}
+            placeholder="Comment"
+            rows={4}
+            {...register("comment")}
+          />
+          {errors.comment && (
+            <p className={css.error}>{errors.comment.message}</p>
+          )}
+        </div>
 
         <button className={css.submitButton} type="submit">
           Send

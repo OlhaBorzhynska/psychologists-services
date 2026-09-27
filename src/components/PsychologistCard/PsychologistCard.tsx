@@ -3,6 +3,7 @@ import css from "./PsychologistCard.module.css";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import AppointmentForm from "../AppointmentForm/AppointmentForm";
+import { useFavorites } from "../../context/useFavorites";
 
 interface PsychologistCardProps {
   psychologist: Psychologist;
@@ -11,6 +12,9 @@ interface PsychologistCardProps {
 const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  const favorite = isFavorite(psychologist.id);
 
   return (
     <li className={css.card}>
@@ -32,9 +36,10 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
         <button
           className={css.favoriteButton}
           type="button"
-          aria-label="Add to favorites"
+          aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+          onClick={() => toggleFavorite(psychologist.id)}
         >
-          ♡
+          {favorite ? "♥" : "♡"}
         </button>
       </div>
 
