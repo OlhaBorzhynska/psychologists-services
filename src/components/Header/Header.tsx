@@ -49,6 +49,12 @@ const Header = () => {
             <NavLink to="/psychologists" className={css.navLink}>
               Psychologists
             </NavLink>
+
+            {!loading && user && (
+              <NavLink to="/favorites" className={css.navLink}>
+                Favorites
+              </NavLink>
+            )}
           </nav>
 
           {!loading && (
