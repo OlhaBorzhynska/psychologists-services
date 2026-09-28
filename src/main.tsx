@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")!).render(
       <FavoritesProvider>
         <BrowserRouter>
           <App />
-          <Toaster position="top-right" />
+          <Toaster position="bottom-right" />
         </BrowserRouter>
       </FavoritesProvider>
     </AuthProvider>

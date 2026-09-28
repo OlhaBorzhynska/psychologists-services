@@ -1,16 +1,20 @@
-import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import { Outlet, useLocation } from "react-router-dom";
+import css from "./MainLayout.module.css";
 
-const MainLayout = () => {
+function MainLayout() {
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
+
   return (
-    <>
-      <Header />
+    <div className={isHomePage ? css.homeLayout : css.innerLayout}>
+      <Header isHomePage={isHomePage} />
 
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   );
-};
+}
 
 export default MainLayout;

@@ -8,7 +8,11 @@ import { logoutUser } from "../../firebase/auth";
 import LoginForm from "../LoginForm/LoginForm";
 import toast from "react-hot-toast";
 
-const Header = () => {
+interface HeaderProps {
+  isHomePage: boolean;
+}
+
+const Header = ({ isHomePage }: HeaderProps) => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -35,45 +39,87 @@ const Header = () => {
           <LoginForm onSuccess={() => setIsLoginModalOpen(false)} />
         </Modal>
       )}
-      <header className={css.header}>
-        <div className="container">
+      <header
+        className={`${css.header} ${
+          isHomePage ? css.homeHeader : css.innerHeader
+        }`}
+      >
+        <div className={css.container}>
           <NavLink to="/" className={css.logo}>
-            Psychologists
+            <svg>
+              <use href="/icons/sprite.svg#icon-psychologistsservices" />
+            </svg>
           </NavLink>
 
           <nav className={css.navigation}>
-            <NavLink to="/" className={css.navLink}>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `${css.navLink} ${isActive ? css.active : ""}`
+              }
+            >
               Home
             </NavLink>
 
-            <NavLink to="/psychologists" className={css.navLink}>
+            <NavLink
+              to="/psychologists"
+              className={({ isActive }) =>
+                `${css.navLink} ${isActive ? css.active : ""}`
+              }
+            >
               Psychologists
             </NavLink>
 
             {!loading && user && (
-              <NavLink to="/favorites" className={css.navLink}>
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  `${css.navLink} ${isActive ? css.active : ""}`
+                }
+              >
                 Favorites
               </NavLink>
             )}
           </nav>
 
           {!loading && (
-            <div className={css.authActions}>
+            <div
+              className={`${css.authActions} ${
+                user ? css.authenticated : css.unauthenticated
+              }`}
+            >
               {user ? (
                 <>
-                  <span>{user.displayName}</span>
+                  <div className={css.user}>
+                    <span className={css.userAvatar}>
+                      <svg>
+                        <use href="/icons/sprite.svg#icon-user" />
+                      </svg>
+                    </span>
+                    <p className={css.userName}>{user.displayName}</p>
+                  </div>
 
-                  <button type="button" onClick={handleLogout}>
+                  <button
+                    className={css.btnLogout}
+                    type="button"
+                    onClick={handleLogout}
+                  >
                     Log Out
                   </button>
                 </>
               ) : (
                 <>
-                  <button onClick={() => setIsLoginModalOpen(true)}>
+                  <button
+                    className={css.btnLogin}
+                    type="button"
+                    onClick={() => setIsLoginModalOpen(true)}
+                  >
                     Log In
                   </button>
 
                   <button
+                    className={css.btnRegister}
                     type="button"
                     onClick={() => setIsRegisterModalOpen(true)}
                   >

@@ -1,0 +1,13 @@
+.homeLayout {
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    #fbfbfb 0%,
+    rgba(84, 190, 150, 0.1) 100%
+  );
+}
+
+.innerLayout {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
