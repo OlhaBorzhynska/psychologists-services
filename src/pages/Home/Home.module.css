@@ -1,0 +1,74 @@
+.hero {
+  padding: 78px 0 100px 0;
+  display: flex;
+  justify-content: center;
+  gap: 125px;
+}
+
+.contentWrapper {
+}
+
+.heroTitle {
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 1.025;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  max-width: 595px;
+  margin-top: 48px;
+}
+
+.heroTitleAccent {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.heroText {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  max-width: 510px;
+  margin-top: 20px;
+}
+
+.heroButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 30px;
+  padding: 18px 48px;
+  width: 235px;
+  height: 60px;
+  background-color: var(--color-primary);
+  transition: background-color 250ms ease;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-background);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.heroButton:hover,
+.heroButton:focus {
+  background-color: var(--color-hover);
+}
+
+.heroButton svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.imageWrapper {
+}
+
+.heroImage {
+  width: 464px;
+  height: 526px;
+}
