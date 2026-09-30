@@ -1,0 +1,135 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 438px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(25, 26, 21, 0.5);
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inputErrorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 438px;
+  height: 52px;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text);
+  outline: none;
+  transition:
+    border-color 250ms ease,
+    border-width 250ms ease;
+}
+
+.passwordInput {
+  padding-right: 52px;
+}
+
+.input::placeholder {
+  color: rgba(25, 26, 21, 0.5);
+  opacity: 1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.input:focus,
+.input:hover {
+  border-color: var(--color-primary);
+  border-width: 2px;
+}
+
+.input:has(+ .error) {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+.error {
+  color: var(--color-error);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.passwordIcon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-text);
+}
+
+.registerBtn {
+  border-radius: 30px;
+  padding: 16px 184px;
+  width: 438px;
+  height: 52px;
+  background: var(--color-primary);
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-background);
+  transition: background-color 250ms ease;
+}
+
+.registerBtn:hover,
+.registerBtn:focus {
+  background-color: var(--color-hover);
+}
