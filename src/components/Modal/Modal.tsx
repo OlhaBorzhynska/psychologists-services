@@ -43,7 +43,9 @@ const Modal = ({ children, onClose }: ModalProps) => {
           onClick={onClose}
           aria-label="Close modal"
         >
-          ×
+          <svg>
+            <use href="/icons/sprite.svg#icon-Close" />
+          </svg>
         </button>
 
         {children}
