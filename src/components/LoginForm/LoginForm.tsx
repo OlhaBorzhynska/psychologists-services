@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { loginUser } from "../../firebase/auth";
 import toast from "react-hot-toast";
 import { getAuthErrorMessage } from "../../utils/getAuthErrorMessage";
+import css from "./LoginForm.module.css";
+import { useState } from "react";
 
 interface LoginFormProps {
   onSuccess: () => void;
@@ -23,6 +25,8 @@ const loginSchema = yup.object({
 });
 
 const LoginForm = ({ onSuccess }: LoginFormProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -43,20 +47,63 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Log In</h2>
+    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={css.textWrapper}>
+        <h2 className={css.title}>Log In</h2>
 
-      <p>
-        Welcome back! Please enter your credentials to access your account and
-        continue your search for a psychologist.
-      </p>
-      <input type="email" {...register("email")} />
-      {errors.email && <p>{errors.email.message}</p>}
+        <p className={css.description}>
+          Welcome back! Please enter your credentials to access your account and
+          continue your search for a psychologist.
+        </p>
+      </div>
 
-      <input type="password" {...register("password")} />
-      {errors.password && <p>{errors.password.message}</p>}
+      <div className={css.inputsWrapper}>
+        <div className={css.inputErrorWrapper}>
+          <input
+            className={css.input}
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+          />
+          {errors.email && <p className={css.error}>{errors.email.message}</p>}
+        </div>
 
-      <button type="submit">Log In</button>
+        <div className={css.inputErrorWrapper}>
+          <div className={css.passwordWrapper}>
+            <input
+              className={`${css.input} ${css.passwordInput}`}
+              type={isPasswordVisible ? "text" : "password"}
+              placeholder="Password"
+              {...register("password")}
+            />
+
+            <button
+              className={css.passwordToggle}
+              type="button"
+              onClick={() => setIsPasswordVisible((prev) => !prev)}
+              aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+            >
+              <svg className={css.passwordIcon}>
+                <use
+                  href={
+                    isPasswordVisible
+                      ? "/icons/sprite.svg#icon-eye"
+                      : "/icons/sprite.svg#icon-eye-off"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
+
+          {errors.password && (
+            <p className={css.error}>{errors.password.message}</p>
+          )}
+        </div>
+      </div>
+
+      <button className={css.loginBtn} type="submit">
+        Log In
+      </button>
     </form>
   );
 };

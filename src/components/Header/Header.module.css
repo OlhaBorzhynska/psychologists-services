@@ -9,7 +9,7 @@
 }
 
 .innerHeader {
-  background-color: #fbfbfb;
+  background-color: var(--color-background);
 }
 
 .container {
@@ -120,7 +120,7 @@
 
 .btnRegister:hover,
 .btnRegister:focus {
-  background-color: #36a379;
+  background-color: var(--color-hover);
 }
 
 .btnLogout {
@@ -155,7 +155,7 @@
   border-radius: 10px;
   width: 40px;
   height: 40px;
-  background: #54be96;
+  background: var(--color-primary);
 
   display: flex;
   align-items: center;
