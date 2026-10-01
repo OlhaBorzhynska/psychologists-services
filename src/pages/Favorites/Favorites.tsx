@@ -6,6 +6,7 @@ import type { Psychologist } from "../../types/psychologist";
 import type { FilterOption } from "../../types/filter";
 import { filterPsychologists } from "../../utils/filterPsychologists";
 import PsychologistsFilter from "../../components/PsychologistsFilter/PsychologistsFilter";
+import css from "./Favorites.module.css";
 
 const Favorites = () => {
   const { favoriteIds, isLoading: isFavoritesLoading } = useFavorites();
@@ -42,35 +43,41 @@ const Favorites = () => {
   }
 
   return (
-    <main>
-      <PsychologistsFilter
-        filter={filter}
-        onFilterChange={(value) => {
-          setFilter(value);
-          setVisibleCount(3);
-        }}
-      />
-
-      {sortedFavorites.length === 0 ? (
-        <p>You haven't added any psychologists to your favorites yet.</p>
-      ) : (
-        <ul>
-          {visibleFavorites.map((psychologist) => (
-            <PsychologistCard
-              key={psychologist.id}
-              psychologist={psychologist}
+    <main className="container">
+      <div className={css.page}>
+        {sortedFavorites.length === 0 ? (
+          <p className={css.textAnyFavorites}>
+            You haven't added any psychologists to your favorites yet.
+          </p>
+        ) : (
+          <>
+            <PsychologistsFilter
+              filter={filter}
+              onFilterChange={(value) => {
+                setFilter(value);
+                setVisibleCount(3);
+              }}
             />
-          ))}
-        </ul>
-      )}
-      {visibleCount < sortedFavorites.length && (
-        <button
-          type="button"
-          onClick={() => setVisibleCount((prev) => prev + 3)}
-        >
-          Load more
-        </button>
-      )}
+            <ul className={css.psychologistsList}>
+              {visibleFavorites.map((psychologist) => (
+                <PsychologistCard
+                  key={psychologist.id}
+                  psychologist={psychologist}
+                />
+              ))}
+            </ul>
+          </>
+        )}
+        {visibleCount < sortedFavorites.length && (
+          <button
+            type="button"
+            className={css.loadMoreButton}
+            onClick={() => setVisibleCount((prev) => prev + 3)}
+          >
+            Load more
+          </button>
+        )}
+      </div>
     </main>
   );
 };
