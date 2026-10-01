@@ -26,32 +26,35 @@ const Psychologists = () => {
   const visiblePsychologists = filteredPsychologists.slice(0, visibleCount);
 
   return (
-    <main className={css.page}>
-      <h1 className={css.title}>Psychologists</h1>
+    <main className="container">
+      <div className={css.page}>
+        <PsychologistsFilter
+          filter={filter}
+          onFilterChange={(value) => {
+            setFilter(value);
+            setVisibleCount(3);
+          }}
+        />
 
-      <PsychologistsFilter
-        filter={filter}
-        onFilterChange={(value) => {
-          setFilter(value);
-          setVisibleCount(3);
-        }}
-      />
+        <ul className={css.psychologistsList}>
+          {visiblePsychologists.map((psychologist) => (
+            <PsychologistCard
+              key={psychologist.id}
+              psychologist={psychologist}
+            />
+          ))}
+        </ul>
 
-      <ul className={css.psychologistsList}>
-        {visiblePsychologists.map((psychologist) => (
-          <PsychologistCard key={psychologist.id} psychologist={psychologist} />
-        ))}
-      </ul>
-
-      {visibleCount < filteredPsychologists.length && (
-        <button
-          className={css.loadMoreButton}
-          type="button"
-          onClick={() => setVisibleCount((prev) => prev + 3)}
-        >
-          Load more
-        </button>
-      )}
+        {visibleCount < filteredPsychologists.length && (
+          <button
+            className={css.loadMoreButton}
+            type="button"
+            onClick={() => setVisibleCount((prev) => prev + 3)}
+          >
+            Load more
+          </button>
+        )}
+      </div>
     </main>
   );
 };
