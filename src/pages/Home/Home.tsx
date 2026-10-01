@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <main className="container">
       <section className={css.hero}>
-        <div className={css.сontentWrapper}>
+        <div>
           <h1 className={css.heroTitle}>
             The road to the
             <span className={css.heroTitleAccent}> depths</span> of the human
@@ -32,6 +32,33 @@ const Home = () => {
             alt="Psychologist"
             className={css.heroImage}
           />
+
+          <div className={css.wrapperYellow}>
+            <svg className={css.decorationYellow}>
+              <use href="/icons/sprite.svg#icon-people" />
+            </svg>
+          </div>
+
+          <div className={css.wrapperBlue}>
+            <svg className={css.decorationBlue}>
+              <use href="/icons/sprite.svg#icon-question" />
+            </svg>
+          </div>
+
+          <div className={css.wrapperGreen}>
+            <div className={css.wrapperDecorationGreen}>
+              <svg className={css.decorationGreen}>
+                <use href="/icons/sprite.svg#icon-Check" />
+              </svg>
+            </div>
+
+            <div className={css.wrapperTextGreen}>
+              <p className={css.textDecorationGreen}>
+                Experienced psychologists
+              </p>
+              <p className={css.numberDecorationGreen}>15,000</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
