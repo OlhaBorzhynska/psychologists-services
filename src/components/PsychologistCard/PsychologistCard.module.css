@@ -1,38 +1,117 @@
 .card {
-  padding: 24px;
   border-radius: 24px;
-  background-color: #fff;
+  width: 1184px;
+  background: var(--color-background);
+
+  padding: 24px 24px 24px 168px;
+
+  position: relative;
+}
+
+.avatarWrapper {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  border: 2px solid rgba(84, 190, 150, 0.2);
+  border-radius: 30px;
+  width: 120px;
+  height: 120px;
+}
+
+.avatarWrapper svg {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.avatar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  border-radius: 15px;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.headerInfo {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
+  justify-content: space-between;
 }
 
 .label {
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-gray);
+}
+
+.ratingPriceBtnWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.iconStar {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.rating {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-right: 16px;
+}
+
+.iconStroke {
+  display: block;
+  width: 1px;
+  height: 16px;
+  stroke: rgba(25, 26, 21, 0.2);
+  margin-right: 16px;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-right: 28px;
+}
+
+.accent {
+  color: #38cd3e;
 }
 
 .favoriteButton {
   border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 28px;
+  background-color: transparent;
+}
+
+.iconHeartGreen {
+  display: block;
+  width: 26px;
+  height: 26px;
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+}
+
+.iconHeart {
+  display: block;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--color-text);
 }
 
 .name {
@@ -110,7 +189,7 @@
   line-height: 1.5;
 }
 
-.rating {
+/* .rating {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -120,7 +199,7 @@
 
 .star {
   font-size: 18px;
-}
+} */
 
 .comment {
   margin: 0;

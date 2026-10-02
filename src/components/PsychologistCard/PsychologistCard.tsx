@@ -18,29 +18,52 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
 
   return (
     <li className={css.card}>
-      <div className={css.header}>
+      <div className={css.avatarWrapper}>
         <img
           className={css.avatar}
           src={psychologist.avatar_url}
           alt={psychologist.name}
         />
+        <svg>
+          <use href="/icons/sprite.svg#icon-active" />
+        </svg>
+      </div>
 
-        <div className={css.headerInfo}>
-          <p className={css.label}>Psychologist</p>
+      <div className={css.header}>
+        <p className={css.label}>Psychologist</p>
 
-          <p>Rating: {psychologist.rating}</p>
+        <div className={css.ratingPriceBtnWrapper}>
+          <svg className={css.iconStar}>
+            <use href="/icons/sprite.svg#icon-Star" />
+          </svg>
+          <p className={css.rating}>Rating: {psychologist.rating}</p>
 
-          <p>${psychologist.price_per_hour}/hour</p>
+          <svg className={css.iconStroke}>
+            <use href="/icons/sprite.svg#icon-stroke" />
+          </svg>
+
+          <p className={css.price}>
+            Price / 1 hour:{" "}
+            <span className={css.accent}>${psychologist.price_per_hour}</span>
+          </p>
+
+          <button
+            className={css.favoriteButton}
+            type="button"
+            aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+            onClick={() => toggleFavorite(psychologist.id)}
+          >
+            {favorite ? (
+              <svg className={css.iconHeartGreen}>
+                <use href="/icons/sprite.svg#icon-heart-green" />
+              </svg>
+            ) : (
+              <svg className={css.iconHeart}>
+                <use href="/icons/sprite.svg#icon-heart" />
+              </svg>
+            )}
+          </button>
         </div>
-
-        <button
-          className={css.favoriteButton}
-          type="button"
-          aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
-          onClick={() => toggleFavorite(psychologist.id)}
-        >
-          {favorite ? "♥" : "♡"}
-        </button>
       </div>
 
       <h2 className={css.name}>{psychologist.name}</h2>
