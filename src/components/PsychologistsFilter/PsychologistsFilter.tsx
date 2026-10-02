@@ -38,7 +38,17 @@ const PsychologistsFilter = ({
       >
         <span>{selectedOption?.label}</span>
 
-        <span>{isFilterOpen ? "▲" : "▼"}</span>
+        <div className={css.svgWrapper}>
+          {isFilterOpen ? (
+            <svg>
+              <use href="/icons/sprite.svg#icon-up" />
+            </svg>
+          ) : (
+            <svg>
+              <use href="/icons/sprite.svg#icon-down" />
+            </svg>
+          )}
+        </div>
       </button>
 
       {isFilterOpen && (
