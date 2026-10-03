@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./Modal.module.css";
+import css from "./Modal.module.css";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -32,13 +32,13 @@ const Modal = ({ children, onClose }: ModalProps) => {
 
   return (
     <div
-      className={styles.backdrop}
+      className={css.backdrop}
       onClick={handleBackdropClick}
       role="presentation"
     >
-      <div className={styles.modal}>
+      <div className={css.modal}>
         <button
-          className={styles.closeButton}
+          className={css.closeButton}
           type="button"
           onClick={onClose}
           aria-label="Close modal"

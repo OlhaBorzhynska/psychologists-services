@@ -9,5 +9,5 @@
 
 .innerLayout {
   min-height: 100vh;
-  background-color: #f3f3f3;
+  background-color: var(--color-light-gray);
 }

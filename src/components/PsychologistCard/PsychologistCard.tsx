@@ -38,9 +38,7 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
           </svg>
           <p className={css.rating}>Rating: {psychologist.rating}</p>
 
-          <svg className={css.iconStroke}>
-            <use href="/icons/sprite.svg#icon-stroke" />
-          </svg>
+          <span className={css.stroke}></span>
 
           <p className={css.price}>
             Price / 1 hour:{" "}
@@ -68,17 +66,48 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
 
       <h2 className={css.name}>{psychologist.name}</h2>
 
-      <div className={css.details}>
-        <p>Experience: {psychologist.experience}</p>
+      <ul className={css.detailsList}>
+        <li className={css.detailsItem}>
+          {" "}
+          <p className={css.detailsText}>
+            Experience:{" "}
+            <span className={css.detailsTextAccent}>
+              {psychologist.experience}
+            </span>
+          </p>
+        </li>
 
-        <p>License: {psychologist.license}</p>
+        <li className={css.detailsItem}>
+          <p className={css.detailsText}>
+            License:{" "}
+            <span className={css.detailsTextAccent}>
+              {psychologist.license}
+            </span>
+          </p>
+        </li>
 
-        <p>Specialization: {psychologist.specialization}</p>
+        <li className={css.detailsItem}>
+          <p className={css.detailsText}>
+            Specialization:{" "}
+            <span className={css.detailsTextAccent}>
+              {psychologist.specialization}
+            </span>
+          </p>
+        </li>
 
-        <p>Initial consultation: {psychologist.initial_consultation}</p>
-      </div>
+        <li className={css.detailsItem}>
+          <p className={css.detailsText}>
+            Initial_consultation:{" "}
+            <span className={css.detailsTextAccent}>
+              {psychologist.initial_consultation}
+            </span>
+          </p>
+        </li>
+      </ul>
 
-      <p className={css.about}>{psychologist.about}</p>
+      <p className={`${css.about} ${isExpanded ? css.aboutExpanded : ""}`}>
+        {psychologist.about}
+      </p>
 
       {!isExpanded && (
         <button
@@ -91,21 +120,23 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
       )}
 
       {isExpanded && (
-        <ul className={css.reviews}>
+        <ul className={css.reviewsList}>
           {psychologist.reviews.slice(0, 2).map((review) => (
-            <li key={review.reviewer} className={css.review}>
+            <li key={review.reviewer}>
               <div className={css.avatarRatingWrapper}>
                 <div className={css.avatarName}>
                   {review.reviewer.charAt(0).toUpperCase()}
                 </div>
 
                 <div className={css.nameRatingWrapper}>
-                  <h3 className={css.name}>{review.reviewer}</h3>
+                  <h3 className={css.nameReviewer}>{review.reviewer}</h3>
 
-                  <p className={css.rating}>
-                    <span className={css.star}>★</span>
-                    {review.rating}
-                  </p>
+                  <div className={css.ratingReview}>
+                    <svg className={css.starReview}>
+                      <use href="/icons/sprite.svg#icon-Star" />
+                    </svg>
+                    <p className={css.ratingReviewNumber}>{review.rating}</p>
+                  </div>
                 </div>
               </div>
 

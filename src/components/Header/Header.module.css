@@ -9,7 +9,7 @@
 }
 
 .innerHeader {
-  background-color: #f3f3f3;
+  background-color: var(--color-light-gray);
 }
 
 .container {
