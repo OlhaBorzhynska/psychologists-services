@@ -4,40 +4,51 @@
 }
 
 .title {
-  margin: 0 0 16px;
-  font-size: 28px;
+  font-weight: 500;
+  font-size: 40px;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  max-width: 472px;
 }
 
 .description {
-  margin: 0 0 24px;
-  color: #666;
-  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(25, 26, 21, 0.5);
+  margin-bottom: 40px;
+  max-width: 472px;
 }
 
 .psychologist {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 40px;
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  border-radius: 15px;
+  width: 44px;
+  height: 44px;
   object-fit: cover;
 }
 
 .psychologistLabel {
-  margin: 0 0 4px;
-  font-size: 14px;
-  color: #888;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--color-gray);
+  margin-bottom: 4px;
 }
 
 .psychologistName {
-  margin: 0;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
 }
 
 .form {
@@ -46,49 +57,120 @@
   gap: 16px;
 }
 
+.inputErrorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  gap: 8px;
 }
 
-.input,
-.textarea {
-  width: 100%;
-  padding: 14px 16px;
-
-  border: 1px solid #ddd;
+.input {
+  border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
+  padding: 16px 18px;
+  width: 472px;
+  height: 52px;
+  background-color: transparent;
 
-  font: inherit;
-  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text);
+
+  outline: none;
+  transition:
+    border-color 250ms ease,
+    border-width 250ms ease;
 }
 
-.textarea {
-  resize: vertical;
+.row .input {
+  width: 232px;
 }
 
-.submitButton {
-  padding: 14px 24px;
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(25, 26, 21, 0.5);
+  opacity: 1;
 
-  border: none;
-  border-radius: 12px;
-
-  background-color: #54be96;
-  color: #fff;
-
-  font: inherit;
-  font-weight: 500;
-
-  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
 }
 
-.submitButton:hover {
-  background-color: #42aa82;
+.input:focus,
+.input:hover,
+.textarea:focus,
+.textarea:hover {
+  border-color: var(--color-primary);
+  border-width: 2px;
+}
+
+.input:has(+ .error),
+.textarea:has(+ .error) {
+  border-color: var(--color-error);
+  border-width: 2px;
 }
 
 .error {
-  margin: 4px 0 0;
-  color: #e53935;
-  font-size: 12px;
+  margin: 0;
+
+  color: var(--color-error);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.timePicker {
+  width: 232px;
+}
+
+.textarea {
+  display: block;
+
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 472px;
+  height: 116px;
+  background-color: transparent;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text);
+
+  outline: none;
+  resize: none;
+
+  transition:
+    border-color 250ms ease,
+    border-width 250ms ease;
+}
+
+.submitButton {
+  padding: 16px 217px;
+  width: 472px;
+  height: 52px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--color-primary);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-background);
+
+  transition: background-color 250ms ease;
+
+  margin-top: 24px;
+}
+
+.submitButton:hover,
+.submitButton:focus {
+  background-color: var(--color-hover);
 }

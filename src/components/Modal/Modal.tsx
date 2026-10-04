@@ -48,7 +48,7 @@ const Modal = ({ children, onClose }: ModalProps) => {
           </svg>
         </button>
 
-        {children}
+        <div className={css.modalContent}>{children}</div>
       </div>
     </div>
   );

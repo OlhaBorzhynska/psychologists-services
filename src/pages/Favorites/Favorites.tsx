@@ -7,6 +7,7 @@ import type { FilterOption } from "../../types/filter";
 import { filterPsychologists } from "../../utils/filterPsychologists";
 import PsychologistsFilter from "../../components/PsychologistsFilter/PsychologistsFilter";
 import css from "./Favorites.module.css";
+import { toast } from "react-hot-toast";
 
 const Favorites = () => {
   const { favoriteIds, isLoading: isFavoritesLoading } = useFavorites();
@@ -20,8 +21,8 @@ const Favorites = () => {
       try {
         const data = await getPsychologists();
         setPsychologists(data);
-      } catch (error) {
-        console.error("Failed to load psychologists:", error);
+      } catch {
+        toast.error("Something went wrong. Please try again.");
       } finally {
         setIsPsychologistsLoading(false);
       }

@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { toast } from "react-hot-toast";
+import { Controller } from "react-hook-form";
+import TimePicker from "../TimePicker/TimePicker";
 
 interface AppointmentFormProps {
   psychologist: Psychologist;
@@ -32,6 +34,7 @@ const appointmentSchema = yup.object({
 const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<AppointmentFormData>({
@@ -39,8 +42,9 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
   });
 
   const onSubmit = (data: AppointmentFormData) => {
-    console.log(data);
-    toast.success("Your appointment request has been sent!");
+    toast.success(
+      `Appointment with ${psychologist.name} — ${data.time}. Request sent!`,
+    );
     onSuccess();
   };
 
@@ -68,7 +72,7 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
       </div>
 
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className={css.inputErrorWrapper}>
           <input
             className={css.input}
             type="text"
@@ -79,11 +83,11 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
         </div>
 
         <div className={css.row}>
-          <div>
+          <div className={css.inputErrorWrapper}>
             <input
               className={css.input}
               type="tel"
-              placeholder="Phone"
+              placeholder="+380"
               {...register("phone")}
             />
             {errors.phone && (
@@ -91,13 +95,20 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
             )}
           </div>
 
-          <div>
-            <input className={css.input} type="time" {...register("time")} />
+          <div className={`${css.inputErrorWrapper} ${css.timePicker}`}>
+            <Controller
+              name="time"
+              control={control}
+              render={({ field }) => (
+                <TimePicker value={field.value} onChange={field.onChange} />
+              )}
+            />
+
             {errors.time && <p className={css.error}>{errors.time.message}</p>}
           </div>
         </div>
 
-        <div>
+        <div className={css.inputErrorWrapper}>
           <input
             className={css.input}
             type="email"
@@ -107,7 +118,7 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
           {errors.email && <p className={css.error}>{errors.email.message}</p>}
         </div>
 
-        <div>
+        <div className={css.inputErrorWrapper}>
           <textarea
             className={css.textarea}
             placeholder="Comment"

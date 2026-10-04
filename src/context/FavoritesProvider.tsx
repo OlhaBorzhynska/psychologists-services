@@ -32,8 +32,8 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
       try {
         const favorites = await getFavorites(user.uid);
         setFavoriteIds(favorites);
-      } catch (error) {
-        console.error("Failed to load favorites:", error);
+      } catch {
+        toast.error("Something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -61,8 +61,8 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 
           setFavoriteIds((prev) => [...prev, psychologistId]);
         }
-      } catch (error) {
-        console.error("Failed to update favorites:", error);
+      } catch {
+        toast.error("Something went wrong. Please try again.");
       }
     },
     [user, favoriteIds],
