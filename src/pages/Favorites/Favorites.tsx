@@ -8,6 +8,7 @@ import { filterPsychologists } from "../../utils/filterPsychologists";
 import PsychologistsFilter from "../../components/PsychologistsFilter/PsychologistsFilter";
 import css from "./Favorites.module.css";
 import { toast } from "react-hot-toast";
+import Loader from "../../components/Loader/Loader";
 
 const Favorites = () => {
   const { favoriteIds, isLoading: isFavoritesLoading } = useFavorites();
@@ -40,7 +41,7 @@ const Favorites = () => {
   const visibleFavorites = sortedFavorites.slice(0, visibleCount);
 
   if (isFavoritesLoading || isPsychologistsLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
