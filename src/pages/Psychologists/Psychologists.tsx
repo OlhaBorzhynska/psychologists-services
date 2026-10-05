@@ -7,16 +7,22 @@ import css from "./Psychologists.module.css";
 import type { FilterOption } from "../../types/filter";
 import { filterPsychologists } from "../../utils/filterPsychologists";
 import PageMeta from "../../components/PageMeta/PageMeta";
+import Loader from "../../components/Loader/Loader";
 
 const Psychologists = () => {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   const [visibleCount, setVisibleCount] = useState(3);
   const [filter, setFilter] = useState<FilterOption>("show-all");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPsychologists = async () => {
-      const data = await getPsychologists();
-      setPsychologists(data);
+      try {
+        const data = await getPsychologists();
+        setPsychologists(data);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchPsychologists();
@@ -35,31 +41,37 @@ const Psychologists = () => {
 
       <main className="container">
         <div className={css.page}>
-          <PsychologistsFilter
-            filter={filter}
-            onFilterChange={(value) => {
-              setFilter(value);
-              setVisibleCount(3);
-            }}
-          />
-
-          <ul className={css.psychologistsList}>
-            {visiblePsychologists.map((psychologist) => (
-              <PsychologistCard
-                key={psychologist.id}
-                psychologist={psychologist}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <PsychologistsFilter
+                filter={filter}
+                onFilterChange={(value) => {
+                  setFilter(value);
+                  setVisibleCount(3);
+                }}
               />
-            ))}
-          </ul>
 
-          {visibleCount < filteredPsychologists.length && (
-            <button
-              className={css.loadMoreButton}
-              type="button"
-              onClick={() => setVisibleCount((prev) => prev + 3)}
-            >
-              Load more
-            </button>
+              <ul className={css.psychologistsList}>
+                {visiblePsychologists.map((psychologist) => (
+                  <PsychologistCard
+                    key={psychologist.id}
+                    psychologist={psychologist}
+                  />
+                ))}
+              </ul>
+
+              {visibleCount < filteredPsychologists.length && (
+                <button
+                  className={css.loadMoreButton}
+                  type="button"
+                  onClick={() => setVisibleCount((prev) => prev + 3)}
+                >
+                  Load more
+                </button>
+              )}
+            </>
           )}
         </div>
       </main>
