@@ -55,6 +55,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 472px;
 }
 
 .inputErrorWrapper {
@@ -69,6 +70,7 @@
 }
 
 .input {
+  appearance: none;
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
   padding: 16px 18px;
@@ -87,9 +89,26 @@
     border-width 250ms ease;
 }
 
-.row .input {
-  width: 232px;
+.row > .inputErrorWrapper {
+  flex: 1;
+  min-width: 0;
 }
+
+.row .input {
+  width: 100%;
+}
+
+.timePicker {
+  width: auto;
+}
+
+/* .row .input {
+  width: 232px;
+} */
+
+/* .timePicker {
+  width: 232px;
+} */
 
 .input::placeholder,
 .textarea::placeholder {
@@ -122,10 +141,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-}
-
-.timePicker {
-  width: 232px;
 }
 
 .textarea {
