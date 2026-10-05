@@ -9,6 +9,7 @@ import PsychologistsFilter from "../../components/PsychologistsFilter/Psychologi
 import css from "./Favorites.module.css";
 import { toast } from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
+import PageMeta from "../../components/PageMeta/PageMeta";
 
 const Favorites = () => {
   const { favoriteIds, isLoading: isFavoritesLoading } = useFavorites();
@@ -45,42 +46,49 @@ const Favorites = () => {
   }
 
   return (
-    <main className="container">
-      <div className={css.page}>
-        {sortedFavorites.length === 0 ? (
-          <p className={css.textAnyFavorites}>
-            You haven't added any psychologists to your favorites yet.
-          </p>
-        ) : (
-          <>
-            <PsychologistsFilter
-              filter={filter}
-              onFilterChange={(value) => {
-                setFilter(value);
-                setVisibleCount(3);
-              }}
-            />
-            <ul className={css.psychologistsList}>
-              {visibleFavorites.map((psychologist) => (
-                <PsychologistCard
-                  key={psychologist.id}
-                  psychologist={psychologist}
-                />
-              ))}
-            </ul>
-          </>
-        )}
-        {visibleCount < sortedFavorites.length && (
-          <button
-            type="button"
-            className={css.loadMoreButton}
-            onClick={() => setVisibleCount((prev) => prev + 3)}
-          >
-            Load more
-          </button>
-        )}
-      </div>
-    </main>
+    <>
+      <PageMeta
+        title="Favorite Psychologists"
+        description="View and manage your favorite psychologists in one place."
+      />
+
+      <main className="container">
+        <div className={css.page}>
+          {sortedFavorites.length === 0 ? (
+            <p className={css.textAnyFavorites}>
+              You haven't added any psychologists to your favorites yet.
+            </p>
+          ) : (
+            <>
+              <PsychologistsFilter
+                filter={filter}
+                onFilterChange={(value) => {
+                  setFilter(value);
+                  setVisibleCount(3);
+                }}
+              />
+              <ul className={css.psychologistsList}>
+                {visibleFavorites.map((psychologist) => (
+                  <PsychologistCard
+                    key={psychologist.id}
+                    psychologist={psychologist}
+                  />
+                ))}
+              </ul>
+            </>
+          )}
+          {visibleCount < sortedFavorites.length && (
+            <button
+              type="button"
+              className={css.loadMoreButton}
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+            >
+              Load more
+            </button>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

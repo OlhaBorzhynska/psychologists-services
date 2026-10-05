@@ -7,16 +7,19 @@ import { Toaster } from "react-hot-toast";
 import "modern-normalize";
 import "./index.css";
 import App from "./App.tsx";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider>
-      <FavoritesProvider>
-        <BrowserRouter>
-          <App />
-          <Toaster position="bottom-right" />
-        </BrowserRouter>
-      </FavoritesProvider>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <FavoritesProvider>
+          <BrowserRouter>
+            <App />
+            <Toaster position="bottom-right" />
+          </BrowserRouter>
+        </FavoritesProvider>
+      </AuthProvider>
+    </HelmetProvider>
   </StrictMode>,
 );
