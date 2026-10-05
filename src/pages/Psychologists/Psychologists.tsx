@@ -8,6 +8,7 @@ import type { FilterOption } from "../../types/filter";
 import { filterPsychologists } from "../../utils/filterPsychologists";
 import PageMeta from "../../components/PageMeta/PageMeta";
 import Loader from "../../components/Loader/Loader";
+import { toast } from "react-hot-toast";
 
 const Psychologists = () => {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
@@ -20,6 +21,8 @@ const Psychologists = () => {
       try {
         const data = await getPsychologists();
         setPsychologists(data);
+      } catch {
+        toast.error("Something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }
