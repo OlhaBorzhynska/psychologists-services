@@ -1,7 +1,7 @@
 # 🧠 Psychologists Services
 
 <p align="center">
-  <img src="public/images/og-image.jpg" alt="Psychologists Services" width="100%">
+  <img src="public/og-image.jpg" alt="Psychologists Services" width="100%">
 </p>
 
 ---
@@ -22,8 +22,8 @@ The project also includes user authentication and a protected Favorites page ava
 
 **🏠 Home Page**
 
-<p align="center">
-  <img src="public/images/hero-section-preview.webp" alt="Psychologists Home Page" width="100%">
+<p>
+  <img src="public/images/hero-section-preview.webp" alt="Psychologists Home Page" width="80%">
 </p>
 
 - Introduction to the psychological services.
@@ -31,10 +31,12 @@ The project also includes user authentication and a protected Favorites page ava
 - Call-to-action button leading to the psychologists catalog.
 - Responsive layout for different screen sizes.
 
+---
+
 **🧠 Psychologists Page**
 
-<p align="center">
-  <img src="public/images/psychologists-page-preview.webp" alt="Psychologists Page" width="100%">
+<p>
+  <img src="public/images/psychologists-page-preview.webp" alt="Psychologists Page" width="80%">
 </p>
 
 - Display psychologists loaded from Firebase Realtime Database.
@@ -49,10 +51,12 @@ The project also includes user authentication and a protected Favorites page ava
   - Highest rating.
 - Display an empty state when no psychologists match the selected criteria.
 
+---
+
 **👩‍⚕️ Psychologist Cards**
 
-<p align="center">
-  <img src="public/images/psychologist-card-preview.webp" alt="Psychologists Card" width="100%">
+<p>
+  <img src="public/images/psychologist-card-preview.webp" alt="Psychologists Card" width="80%">
 </p>
 
 - Each card provides information about the psychologist, including:
@@ -67,10 +71,12 @@ The project also includes user authentication and a protected Favorites page ava
   - About section.
 - The Read more button expands the card and displays additional information, including client reviews.
 
+---
+
 **❤️ Favorites**
 
-<p align="center">
-  <img src="public/images/favorites-page-preview.webp" alt="Favorites Psychologists Page" width="100%">
+<p>
+  <img src="public/images/favorites-page-preview.webp" alt="Favorites Psychologists Page" width="80%">
 </p>
 
 - Add psychologists to favorites.
@@ -80,10 +86,12 @@ The project also includes user authentication and a protected Favorites page ava
 - Protected Favorites page available only to authenticated users.
 - Display favorite psychologists using the same card layout as the main catalog.
 
+---
+
 **🔐 Authentication**
 
-<p align="center">
-  <img src="public/images/registration-preview.webp" alt="Registration preview" width="100%">
+<p>
+  <img src="public/images/registration-preview.webp" alt="Registration preview" width="40%">
 </p>
 
 - User authentication is implemented with Firebase Authentication.
@@ -99,10 +107,12 @@ The project also includes user authentication and a protected Favorites page ava
   - Password visibility toggle.
   - Success and error toast notifications.
 
+  ---
+
 **📅 Appointment Form**
 
-<p align="center">
-  <img src="public/images/appointment-form-preview.webp" alt="Appointment form preview" width="100%">
+<p>
+  <img src="public/images/appointment-form-preview.webp" alt="Appointment form preview" width="40%">
 </p>
 
 - Users can submit an appointment request for a psychologist.
@@ -118,10 +128,12 @@ The project also includes user authentication and a protected Favorites page ava
   - Success notification after submitting the request.
   - Automatic closing of the modal after successful submission.
 
+  ---
+
 **🪟 Modal Windows**
 
-<p align="center">
-  <img src="public/images/login-preview.webp" alt="Login preview" width="100%">
+<p>
+  <img src="public/images/login-preview.webp" alt="Login preview" width="40%">
 </p>
 
 - Modal windows are used for authentication and appointment forms.
@@ -129,6 +141,8 @@ The project also includes user authentication and a protected Favorites page ava
   - Clicking the close button.
   - Clicking the backdrop.
   - Pressing the Esc key.
+
+  ---
 
 **🎨 Interface**
 
@@ -140,6 +154,8 @@ The project also includes user authentication and a protected Favorites page ava
 - Hover and focus states for interactive elements.
 - Toast notifications.
 - Responsive navigation and content layout.
+
+---
 
 **🔥 Firebase**
 
