@@ -8,7 +8,7 @@
 
 ## 📖 About the Project
 
-**🌐 Live Page:** View Project
+**🌐 Live Page:**[ View Project](https://psychologists-services-delta.vercel.app/)
 
 **Psychologists Services** is a web application created for a company that provides psychological services.
 
