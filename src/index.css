@@ -72,19 +72,22 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1312px;
+  min-width: 320px;
+  max-width: 375px;
   margin: 0 auto;
-  padding: 0 64px;
+  padding: 0 16px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
   .container {
-    padding: 0 20px;
+    max-width: 768px;
+    padding: 0 32px;
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (min-width: 1312px) {
   .container {
-    padding: 0 32px;
+    max-width: 1312px;
+    padding: 0 64px;
   }
 }
