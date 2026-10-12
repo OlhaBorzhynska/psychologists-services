@@ -1,29 +1,26 @@
 .card {
-  border-radius: 24px;
-  width: 1184px;
-  background: var(--color-background);
-
-  padding: 24px 24px 24px 168px;
-
   position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 20px 16px;
+  border-radius: 20px;
+  background: var(--color-background);
+  overflow-wrap: anywhere;
 }
 
 .avatarWrapper {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
   border: 2px solid rgba(84, 190, 150, 0.2);
   border-radius: 30px;
-  width: 120px;
-  height: 120px;
 }
 
 .avatarWrapper svg {
   position: absolute;
-  top: 9px;
-  right: 9px;
-
+  top: 7px;
+  right: 7px;
   display: block;
   width: 14px;
   height: 14px;
@@ -31,64 +28,83 @@
 
 .avatar {
   position: absolute;
-  top: 12px;
-  left: 12px;
-
+  top: 10px;
+  left: 10px;
+  width: 76px;
+  height: 76px;
   border-radius: 15px;
-  width: 96px;
-  height: 96px;
   object-fit: cover;
 }
 
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.titleWrapper {
+  min-width: 0;
+}
+
+.name {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--color-text);
 }
 
 .label {
+  margin-bottom: 4px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-gray);
-  margin-bottom: 8px;
 }
 
 .ratingPriceBtnWrapper {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+}
+
+.ratingPriceWrapper {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 
 .iconStar {
   display: block;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
-  margin-right: 4px;
+  margin-right: -4px;
 }
 
 .rating {
+  margin-right: 4px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-text);
-  margin-right: 16px;
 }
 
 .stroke {
-  flex-shrink: 0;
-  display: block;
-  width: 1px;
-  height: 16px;
-  background-color: rgba(25, 26, 21, 0.2);
-  margin-right: 16px;
+  display: none;
 }
 
 .price {
+  margin-right: 4px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-text);
-  margin-right: 28px;
 }
 
 .accent {
@@ -96,51 +112,61 @@
 }
 
 .favoriteButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 5px;
   border: none;
+  border-radius: 50%;
   background-color: transparent;
+  cursor: pointer;
 }
 
-.iconHeartGreen {
+.iconHeartGreen,
+.iconHeart {
   display: block;
   width: 26px;
   height: 26px;
+}
+
+.iconHeartGreen {
   fill: var(--color-primary);
   stroke: var(--color-primary);
 }
 
 .iconHeart {
-  display: block;
-  width: 26px;
-  height: 26px;
   fill: none;
   stroke: var(--color-text);
-}
-
-.name {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1;
-  color: var(--color-text);
-  margin-bottom: 24px;
 }
 
 .detailsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 8px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
 }
 
 .detailsItem {
+  max-width: 100%;
+  min-height: 40px;
+  height: auto;
+  padding: 8px 12px;
   border-radius: 24px;
-  padding: 8px 16px;
-  height: 40px;
   background-color: var(--color-light-gray);
 }
 
 .detailsText {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-gray);
 }
@@ -150,52 +176,55 @@
 }
 
 .about {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: rgba(25, 26, 21, 0.5);
   margin-bottom: 14px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: rgba(25, 26, 21, 0.5);
 }
 
 .aboutExpanded {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .readMoreButton {
+  padding: 0;
   border: none;
   background: transparent;
-  padding: 0;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: var(--color-text);
+  cursor: pointer;
 }
 
 .reviewsList {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin-bottom: 40px;
+  gap: 24px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
 }
 
 .avatarRatingWrapper {
   display: flex;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .avatarName {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-
-  border-radius: 100px;
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   background-color: rgba(84, 190, 150, 0.2);
-
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
@@ -206,6 +235,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .nameReviewer {
@@ -236,29 +266,202 @@
 
 .comment {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 15px;
+  line-height: 1.4;
   color: rgba(25, 26, 21, 0.5);
 }
 
 .appointmentButton {
-  border-radius: 30px;
-  padding: 14px 32px;
-  width: 227px;
-  height: 48px;
-  background-color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 14px 24px;
   border: none;
-
+  border-radius: 30px;
+  background-color: var(--color-primary);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--color-background);
-
+  cursor: pointer;
   transition: background-color 250ms ease;
 }
 
 .appointmentButton:hover,
-.appointmentButton:focus {
+.appointmentButton:focus-visible {
   background-color: var(--color-hover);
+}
+
+.favoriteButton:focus-visible,
+.readMoreButton:focus-visible {
+  outline: 2px solid var(--color-hover);
+  outline-offset: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    padding: 24px 24px 24px 136px;
+    border-radius: 24px;
+  }
+
+  .avatarWrapper {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 0;
+  }
+
+  .avatar {
+    top: 10px;
+    left: 10px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .ratingPriceBtnWrapper {
+    gap: 8px;
+  }
+
+  .label {
+    margin-bottom: 4px;
+  }
+
+  .name {
+    font-size: 24px;
+  }
+
+  .detailsList {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .detailsItem {
+    padding: 8px 16px;
+  }
+
+  .detailsText {
+    font-size: 15px;
+  }
+
+  .about,
+  .comment {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .aboutExpanded {
+    margin-bottom: 40px;
+  }
+
+  .appointmentButton {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .card {
+    width: 100%;
+    padding: 24px 24px 24px 168px;
+  }
+
+  .avatarWrapper {
+    top: 24px;
+    left: 24px;
+    border-radius: 30px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .avatarWrapper svg {
+    top: 9px;
+    right: 9px;
+  }
+
+  .avatar {
+    top: 12px;
+    left: 12px;
+    width: 96px;
+    height: 96px;
+    border-radius: 15px;
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .titleWrapper {
+    flex-shrink: 0;
+  }
+
+  .label {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .ratingPriceBtnWrapper {
+    flex-wrap: nowrap;
+    gap: 0;
+    justify-content: flex-end;
+  }
+
+  .ratingPriceWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .rating {
+    margin-right: 16px;
+    font-size: 16px;
+  }
+
+  .stroke {
+    display: block;
+    flex-shrink: 0;
+    width: 1px;
+    height: 16px;
+    margin-right: 16px;
+    background-color: rgba(25, 26, 21, 0.2);
+  }
+
+  .price {
+    margin-right: 28px;
+    font-size: 16px;
+  }
+
+  .name {
+    margin-bottom: 0;
+  }
+
+  .favoriteButton {
+    position: static;
+  }
+
+  .detailsText {
+    font-size: 16px;
+  }
+
+  .aboutExpanded {
+    margin-bottom: 48px;
+  }
+
+  .comment {
+    line-height: 1.25;
+  }
+
+  .appointmentButton {
+    width: 227px;
+    padding: 14px 32px;
+  }
 }

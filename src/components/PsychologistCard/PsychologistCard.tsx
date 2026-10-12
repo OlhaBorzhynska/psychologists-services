@@ -30,20 +30,23 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
       </div>
 
       <div className={css.header}>
-        <p className={css.label}>Psychologist</p>
+        <div className={css.titleWrapper}>
+          <p className={css.label}>Psychologist</p>
+          <h2 className={css.name}>{psychologist.name}</h2>
+        </div>
 
         <div className={css.ratingPriceBtnWrapper}>
-          <svg className={css.iconStar}>
-            <use href="/icons/sprite.svg#icon-Star" />
-          </svg>
-          <p className={css.rating}>Rating: {psychologist.rating}</p>
-
-          <span className={css.stroke}></span>
-
-          <p className={css.price}>
-            Price / 1 hour:{" "}
-            <span className={css.accent}>${psychologist.price_per_hour}</span>
-          </p>
+          <div className={css.ratingPriceWrapper}>
+            <svg className={css.iconStar}>
+              <use href="/icons/sprite.svg#icon-Star" />
+            </svg>
+            <p className={css.rating}>Rating: {psychologist.rating}</p>
+            <span className={css.stroke}></span>
+            <p className={css.price}>
+              Price / 1 hour:{" "}
+              <span className={css.accent}>${psychologist.price_per_hour}</span>
+            </p>
+          </div>
 
           <button
             className={css.favoriteButton}
@@ -63,8 +66,6 @@ const PsychologistCard = ({ psychologist }: PsychologistCardProps) => {
           </button>
         </div>
       </div>
-
-      <h2 className={css.name}>{psychologist.name}</h2>
 
       <ul className={css.detailsList}>
         <li className={css.detailsItem}>
