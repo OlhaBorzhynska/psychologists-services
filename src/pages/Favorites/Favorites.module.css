@@ -1,10 +1,12 @@
 .page {
-  padding: 64px 0 100px 0;
+  padding: 32px 0 64px;
 }
 
 .textAnyFavorites {
+  max-width: 600px;
+  margin: 0 auto;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-gray);
   text-align: center;
@@ -13,19 +15,22 @@
 .psychologistsList {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 
-  margin: 32px 0 64px 0;
+  margin: 24px 0 40px;
+  padding: 0;
+  list-style: none;
 }
 
 .loadMoreButton {
   display: block;
-  margin: 0 auto;
-  border-radius: 30px;
-  padding: 14px 48px;
   width: 176px;
-  height: 48px;
+  min-height: 48px;
+  margin: 0 auto;
+  padding: 14px 32px;
+
   border: none;
+  border-radius: 30px;
   background: var(--color-primary);
 
   font-weight: 500;
@@ -34,9 +39,41 @@
   letter-spacing: -0.01em;
   color: var(--color-background);
 
+  cursor: pointer;
   transition: background-color 250ms ease;
 }
 
-.loadMoreButton:hover {
+.loadMoreButton:hover,
+.loadMoreButton:focus-visible {
   background-color: var(--color-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding: 48px 0 80px;
+  }
+
+  .textAnyFavorites {
+    font-size: 18px;
+  }
+
+  .psychologistsList {
+    gap: 24px;
+    margin: 32px 0 48px;
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .page {
+    padding: 64px 0 100px;
+  }
+
+  .textAnyFavorites {
+    font-size: 20px;
+  }
+
+  .psychologistsList {
+    gap: 32px;
+    margin: 32px 0 64px;
+  }
 }
