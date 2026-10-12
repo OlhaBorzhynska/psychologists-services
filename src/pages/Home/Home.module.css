@@ -1,18 +1,18 @@
 .hero {
-  padding: 78px 0 100px 0;
   display: flex;
-  justify-content: center;
-  gap: 125px;
+  flex-direction: column;
+  gap: 40px;
+  padding: 32px 0 64px;
 }
 
 .heroTitle {
+  max-width: 595px;
+  margin-top: 0;
   font-weight: 600;
-  font-size: 80px;
-  line-height: 1.025;
+  font-size: 36px;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  max-width: 595px;
-  margin-top: 48px;
 }
 
 .heroTitleAccent {
@@ -21,13 +21,13 @@
 }
 
 .heroText {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.33;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
   max-width: 510px;
   margin-top: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
 }
 
 .heroButton {
@@ -35,57 +35,63 @@
   align-items: center;
   justify-content: center;
   gap: 18px;
-  border-radius: 30px;
-  padding: 18px 48px;
   width: 235px;
-  height: 60px;
+  min-height: 56px;
+  margin-top: 28px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 30px;
   background-color: var(--color-primary);
-  transition: background-color 250ms ease;
 
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--color-background);
-  margin-top: 40px;
-  margin-bottom: 40px;
+
+  transition: background-color 250ms ease;
 }
 
 .heroButton:hover,
-.heroButton:focus {
+.heroButton:focus-visible {
   background-color: var(--color-hover);
 }
 
 .heroButton svg {
   display: block;
+  flex-shrink: 0;
   width: 14px;
   height: 14px;
 }
 
 .imageWrapper {
   position: relative;
+  width: 100%;
+  max-width: 464px;
+  margin: 0 auto;
 }
 
 .heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 464 / 526;
+  object-fit: cover;
   border-radius: 10px;
-  width: 464px;
-  height: 526px;
 }
 
 .wrapperYellow {
   position: absolute;
-  top: 38px;
-  right: -38px;
-  transform: rotate(15deg);
-
+  top: 7%;
+  right: -6%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
-  width: 48px;
-  height: 48px;
   background: #fbc75e;
+  transform: rotate(15deg);
 }
 
 .decorationYellow {
@@ -97,18 +103,16 @@
 
 .wrapperBlue {
   position: absolute;
-  top: 185px;
-  left: -33px;
-  transform: rotate(-15deg);
-
+  top: 35%;
+  left: -6%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 34px;
+  height: 34px;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
   background: #4535af;
+  transform: rotate(-15deg);
 }
 
 .decorationBlue {
@@ -120,29 +124,28 @@
 
 .wrapperGreen {
   position: absolute;
-  bottom: 75px;
-  left: -101px;
-
+  bottom: 12%;
+  left: -10%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 16px;
-
-  border-radius: 20px;
-  width: 311px;
-  height: 118px;
+  justify-content: center;
+  gap: 12px;
+  width: min(240px, 96%);
+  min-height: 74px;
+  padding: 16px;
+  border-radius: 16px;
   background: var(--color-primary);
 }
 
 .wrapperDecorationGreen {
-  border-radius: 13px;
-  width: 54px;
-  height: 54px;
-  background: var(--color-background);
-
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--color-background);
 }
 
 .decorationGreen {
@@ -159,12 +162,147 @@
 
 .textDecorationGreen {
   font-weight: 400;
-  font-size: 14px;
-  color: rgba(251, 251, 251, 0.5);
+  font-size: 12px;
+  color: rgba(251, 251, 251, 0.7);
 }
 
 .numberDecorationGreen {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--color-background);
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 56px 0 80px;
+  }
+
+  .hero > div:first-child {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .heroTitle {
+    font-size: 42px;
+  }
+
+  .heroText {
+    font-size: 16px;
+  }
+
+  .heroButton {
+    margin-top: 32px;
+    margin-bottom: 0;
+  }
+
+  .imageWrapper {
+    flex: 0 1 42%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .wrapperYellow {
+    right: -10%;
+    width: 44px;
+    height: 44px;
+  }
+
+  .wrapperBlue {
+    left: -8%;
+    width: 38px;
+    height: 38px;
+  }
+
+  .wrapperGreen {
+    left: -15%;
+    width: 240px;
+    min-height: 60px;
+  }
+
+  .textDecorationGreen {
+    font-size: 12px;
+  }
+
+  .numberDecorationGreen {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .hero {
+    gap: 125px;
+    padding: 78px 0 100px;
+  }
+
+  .heroTitle {
+    margin-top: 48px;
+    font-size: 80px;
+    line-height: 1.025;
+  }
+
+  .heroText {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .heroButton {
+    height: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 18px 48px;
+    font-size: 20px;
+  }
+
+  .imageWrapper {
+    flex: 0 0 464px;
+  }
+
+  .heroImage {
+    width: 464px;
+    height: 526px;
+    aspect-ratio: auto;
+  }
+
+  .wrapperYellow {
+    top: 38px;
+    right: -38px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .wrapperBlue {
+    top: 185px;
+    left: -33px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .wrapperGreen {
+    bottom: 75px;
+    left: -101px;
+    gap: 16px;
+    width: 311px;
+    height: 118px;
+    min-height: 0;
+    padding: 0;
+    border-radius: 20px;
+  }
+
+  .wrapperDecorationGreen {
+    width: 54px;
+    height: 54px;
+  }
+
+  .textDecorationGreen {
+    font-size: 14px;
+    color: rgba(251, 251, 251, 0.5);
+  }
+
+  .numberDecorationGreen {
+    font-size: 24px;
+  }
 }
