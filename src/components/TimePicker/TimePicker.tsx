@@ -4,6 +4,7 @@ import css from "./TimePicker.module.css";
 interface TimePickerProps {
   value: string;
   onChange: (time: string) => void;
+  isInvalid?: boolean;
 }
 
 const generateTimeOptions = (): string[] => {
@@ -24,7 +25,11 @@ const generateTimeOptions = (): string[] => {
 
 const timeOptions = generateTimeOptions();
 
-const TimePicker = ({ value, onChange }: TimePickerProps) => {
+const TimePicker = ({
+  value,
+  onChange,
+  isInvalid = false,
+}: TimePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -71,7 +76,9 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
     <div className={css.wrapper} ref={pickerRef}>
       <button
         type="button"
-        className={`${css.input} ${isOpen ? css.inputActive : ""}`}
+        className={`${css.input} ${
+          isOpen ? css.inputActive : ""
+        } ${isInvalid ? css.inputInvalid : ""}`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <span className={value ? css.value : css.placeholder}>

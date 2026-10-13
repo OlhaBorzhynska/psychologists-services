@@ -100,7 +100,11 @@ const AppointmentForm = ({ psychologist, onSuccess }: AppointmentFormProps) => {
               name="time"
               control={control}
               render={({ field }) => (
-                <TimePicker value={field.value} onChange={field.onChange} />
+                <TimePicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  isInvalid={!!errors.time}
+                />
               )}
             />
 

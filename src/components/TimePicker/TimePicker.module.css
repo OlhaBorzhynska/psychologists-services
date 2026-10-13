@@ -31,6 +31,13 @@
   border-width: 2px;
 }
 
+.inputInvalid,
+.inputInvalid:hover,
+.inputInvalid.inputActive {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
 .placeholder {
   color: rgba(25, 26, 21, 0.5);
 }
